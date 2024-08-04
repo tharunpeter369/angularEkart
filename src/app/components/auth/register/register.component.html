@@ -1,0 +1,118 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2>Register</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                id="name"
+                class="form-control"
+                formControlName="name"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('name')?.invalid &&
+                    registerForm.get('name')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('name')?.invalid &&
+                  registerForm.get('name')?.touched
+                "
+                class="invalid-feedback"
+              >
+                Name is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                id="email"
+                class="form-control"
+                formControlName="email"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('email')?.invalid &&
+                    registerForm.get('email')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('email')?.invalid &&
+                  registerForm.get('email')?.touched
+                "
+                class="invalid-feedback"
+              >
+                Enter a valid email.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('password')?.invalid &&
+                    registerForm.get('password')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('password')?.invalid &&
+                  registerForm.get('password')?.touched
+                "
+                class="invalid-feedback"
+              >
+                Password must be at least 6 characters long.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-control"
+                formControlName="confirmPassword"
+                [ngClass]="{
+                  'is-invalid':
+                    registerForm.get('confirmPassword')?.invalid &&
+                    registerForm.get('confirmPassword')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('confirmPassword')?.invalid &&
+                  registerForm.get('confirmPassword')?.touched
+                "
+                class="invalid-feedback"
+              >
+                Passwords do not match.
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="registerForm.invalid"
+            >
+              Register
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <p>Already have an account?</p>
+            <a routerLink="/login" class="btn btn-secondary"> Login Here </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

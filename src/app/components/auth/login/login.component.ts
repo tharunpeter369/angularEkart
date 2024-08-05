@@ -7,18 +7,20 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, HttpClientModule],
   templateUrl: './login.component.html',
   // styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -31,8 +33,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      console.log('Form Submitted', this.loginForm.value);
-      // Handle login logic here
+      const { username, password } = this.loginForm.value;
+      this.authService.login(username, password).subscribe((response) => {
+        if (response.length) {
+          console.log('User logged in:', response[0]);
+          // Handle successful login (e.g., redirect to dashboard)
+        } else {
+          console.log('Invalid credentials');
+        }
+      });
     } else {
       console.log('Form not valid');
     }

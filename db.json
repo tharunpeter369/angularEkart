@@ -2,21 +2,42 @@
   "users": [
     {
       "id": 1,
-      "name": "John Doe",
+      "username": "John Doe",
       "email": "john.doe@example.com",
       "password": "password123"
     },
     {
       "id": 2,
-      "name": "Jane Doe",
+      "username": "Jane Doe",
       "email": "jane.doe@example.com",
       "password": "password123"
     },
     {
       "id": 3,
-      "name": "John Smith",
+      "username": "John Smith",
       "email": "john.smith@example.com",
       "password": "password123"
+    },
+    {
+      "id": "0efd",
+      "name": "tharun",
+      "email": "tharun.peter@deskday.ai",
+      "password": "123456",
+      "confirmPassword": "123456"
+    },
+    {
+      "id": "0012",
+      "name": "jisss",
+      "email": "tharun.peter@deskday.ai",
+      "password": "123456",
+      "confirmPassword": "123456"
+    },
+    {
+      "id": "1b34",
+      "name": "thanusha",
+      "email": "thanu@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456"
     }
   ]
 }
